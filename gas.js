@@ -19,7 +19,7 @@ function debug(replyToken, postData) {
   sendReply(replyToken, messages);
 }
 
-function reply(e){
+function reply(e) {
   var messages = [
     { type: "text", text: "Always hello" },
   ];
