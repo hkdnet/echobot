@@ -5,9 +5,21 @@ function doPost(e) {
   Logger.log("parsed...");
   Logger.log(json);
   var events = json.events;
-  for(var i = 0, len = events.length; i < len; i++) {
-    var ev = events[i];
-    templateButtons(ev);
+  var handler = new EventHandler(events);
+  handler.handleAll();
+}
+
+function EventHandler(events) {
+  this.events = events;
+  this.handleAll = function() {
+    var len = this.events.length;
+    for(var i = 0; i < len; i++) {
+      var ev = this.events[i];
+      this.handle(ev);
+    }
+  }
+  this.handle = function(e) {
+    reply(e);
   }
 }
 
@@ -32,10 +44,9 @@ function templateButtons(e) {
     { type: "message", "label": "いいえ", text: "みりあやんないよ" },
   ];
   var messages = [
-    { type: "text", text: "template送ってみるやで" },
     {
       type: "template",
-      altText: "見れない端末やで",
+      altText: "LINEアプデしろ",
       template: {
         type: "buttons",
         // jpeg or png 縦横比 1:1.51 縦横最大1024px 最大1MB
