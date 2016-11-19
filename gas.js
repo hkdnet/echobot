@@ -7,8 +7,7 @@ function doPost(e) {
   var events = json.events;
   for(var i = 0, len = events.length; i < len; i++) {
     var ev = events[i];
-    reply(ev);
-    // debug(ev.replyToken, e.postData);
+    templateButtons(ev);
   }
 }
 
@@ -22,6 +21,32 @@ function debug(replyToken, postData) {
 function reply(e) {
   var messages = [
     { type: "text", text: "Always hello" },
+  ];
+  sendReply(e.replyToken, messages);
+}
+
+function templateButtons(e) {
+  var img = "https://pbs.twimg.com/media/CZzeZctUkAAqa3j.jpg";
+  var actions = [
+    { type: "message", "label": "はい", text: "みりあもやるー" },
+    { type: "message", "label": "いいえ", text: "みりあやんないよ" },
+  ];
+  var messages = [
+    { type: "text", text: "template送ってみるやで" },
+    {
+      type: "template",
+      altText: "見れない端末やで",
+      template: {
+        type: "buttons",
+        // jpeg or png 縦横比 1:1.51 縦横最大1024px 最大1MB
+        thumbnailImageUrl: img,
+        // 40文字以内
+        title: "test-title",
+        // 画像もタイトルも指定しない場合：160文字以内 画像またはタイトルを指定する場合：60文字以内
+        text: "test-text",
+        actions: actions,
+      }
+    },
   ];
   sendReply(e.replyToken, messages);
 }
