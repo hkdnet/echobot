@@ -64,7 +64,7 @@ function templateButtons(e) {
 
 function sendReply(replyToken, messages) {
   var url = 'https://api.line.me/v2/bot/message/reply';
-  var token = "aMnZOrrfxp5BGBaOtPxYoSL+RQNeVljrA7s5CG3QGB320IXQiKOji+zGjOD97W6Dou9rebOQMKqDUxkJL/z4GGpvmOtAmPJetXpR4yuwHMM3V1C9yYYgZlQSq9fc7P7wo06uIlfjsXyVGWb1ovpvGgdB04t89/1O/w1cDnyilFU=";
+  var token = "token";
   var headers = {
     "Content-Type" : "application/json; charset=UTF-8",
     "Authorization": "Bearer " + token,
